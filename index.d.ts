@@ -73,4 +73,4 @@ declare class Logger {
 }
 
 declare const logger: Logger;
-export = logger;
+export default logger;
