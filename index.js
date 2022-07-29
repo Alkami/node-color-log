@@ -232,6 +232,35 @@ class Logger {
         console.log(command);
     }
 
+    working(...args) {
+        if (this.noColor) {
+            const d = this.getDate();
+            this.log(d, " [WORKING] ", ...args, '...');
+        } else {
+            const d = this.getDate();
+            this.log(d + " ").joint()
+                .bgColor('blue').color('black').log("[WORKING]").joint()
+                .log(' ').joint()
+                .color('green')
+                .log(...args)
+                .log('...');
+        }
+    }
+
+    success(...args) {
+        if (this.noColor) {
+            const d = this.getDate();
+            this.log(d, " [SUCCESS] ", ...args);
+        } else {
+            const d = this.getDate();
+            this.log(d + " ").joint()
+                .bgColor('green').color('black').log("[SUCCESS]").joint()
+                .log(' ').joint()
+                .color('green')
+                .log(...args);
+        }
+    }
+
     error(...args) {
         if (!this.isAllowedLevel("error"))
             return;
@@ -293,23 +322,6 @@ class Logger {
                 .bgColor('cyan').color('black').log("[DEBUG]").joint()
                 .log(' ').joint()
                 .color('cyan')
-                .log(...args);
-        }
-    }
-
-    success(...args) {
-        if (!this.isAllowedLevel("success"))
-            return;
-
-        if (this.noColor) {
-            const d = this.getDate();
-            this.log(d, " [SUCCESS] ", ...args);
-        } else {
-            const d = this.getDate();
-            this.log(d + " ").joint()
-                .bgColor('green').color('black').log("[SUCCESS]").joint()
-                .log(' ').joint()
-                .color('green')
                 .log(...args);
         }
     }
