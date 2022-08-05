@@ -64,6 +64,8 @@ declare class Logger {
     success(...args: any[]): void;
     
     working(...args: any[]): void;
+    
+    prompt(...args: any[]): void;
 
     // Levels 
     error(...args: any[]): void;

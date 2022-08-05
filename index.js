@@ -232,6 +232,20 @@ class Logger {
         console.log(command);
     }
 
+    success(...args) {
+        if (this.noColor) {
+            const d = this.getDate();
+            this.log(d, " [SUCCESS] ", ...args);
+        } else {
+            const d = this.getDate();
+            this.log(d + " ").joint()
+                .bgColor('green').color('black').log("[SUCCESS]").joint()
+                .log(' ').joint()
+                .color('green')
+                .log(...args);
+        }
+    }
+
     working(...args) {
         if (this.noColor) {
             const d = this.getDate();
@@ -247,19 +261,20 @@ class Logger {
         }
     }
 
-    success(...args) {
+    prompt(...args) {
+        const prefix = '[PROMPT]'
         if (this.noColor) {
-            const d = this.getDate();
-            this.log(d, " [SUCCESS] ", ...args);
+            this.log(` ${prefix} `, ...args, '...');
         } else {
-            const d = this.getDate();
-            this.log(d + " ").joint()
-                .bgColor('green').color('black').log("[SUCCESS]").joint()
+            this.log(" ").joint()
+                .bgColor('blue').color('black').log(`${prefix}`).joint()
                 .log(' ').joint()
                 .color('green')
-                .log(...args);
+                .log(...args)
+                .log('...');
         }
     }
+
 
     error(...args) {
         if (!this.isAllowedLevel("error"))
