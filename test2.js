@@ -10,3 +10,4 @@ logger.warn('warn show');
 logger.info('info show');
 logger.debug('debug will not show');
 logger.success('success show');
+logger.working('working');

@@ -239,9 +239,9 @@ class Logger {
         } else {
             const d = this.getDate();
             this.log(d + " ").joint()
-                .bgColor('blue').color('black').log("[WORKING]").joint()
+                .bgColor('magenta').color('white').log("[WORKING]").joint()
                 .log(' ').joint()
-                .color('green')
+                .color('magenta')
                 .log(...args)
                 .log('...');
         }
